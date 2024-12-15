@@ -63,7 +63,7 @@ class BST:
                 return None
             return {
                 "key": node.key,
-                "value": node.value.dict(),
+                "value": node.value,
                 "left": node_to_dict(node.left),
                 "right": node_to_dict(node.right)
             }

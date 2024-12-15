@@ -31,11 +31,12 @@ class Order(BaseModel):
 def create_product(product: Product):
     existing_product = products_bst.search(product.id)
     if existing_product == None:
-        products_bst.insert(product.id, product)
+        products_bst.insert(product.id, product.dict())
     else:
         raise HTTPException(status_code=404, detail= "A product with the same ID already exists")
     
-    
+    save_to_json(FILE_PRODUCTS, products_bst.to_dictionary())
+    print(product.json())
     return {"response": "Product successfully created!", "Product": product}
 
 
@@ -94,6 +95,6 @@ def delete_order(id: int):
 
 @app.get('/api/order')
 def get_all_orders():
-    return orders_ll.printLL()
+    return orders_ll.convert_to_list()
 
 
