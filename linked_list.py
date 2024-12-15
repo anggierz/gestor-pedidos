@@ -44,3 +44,19 @@ class LinkedList:
                 self.length -= 1
                 return
             current = current.next
+            
+    # Print the linked list:     https://www.geeksforgeeks.org/python-linked-list/    
+    def printLL(self):
+        current_node = self.head
+        while current_node:
+            print(current_node.data)
+            current_node = current_node.next
+            
+    #Convert linked list to list program: https://intellipaat.com/community/58868/how-to-convert-linked-list-to-list-in-python
+    def convert_to_list(self):
+        ll_list = []
+        current_node = self.head
+        while current_node:
+            ll_list.append(current_node.data)
+            current_node = current_node.next
+        return ll_list
