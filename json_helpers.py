@@ -1,7 +1,5 @@
 import os
 import json
-from bst import BST
-
 
 def read_json(filepath: str):
     if not os.path.isfile(filepath):
