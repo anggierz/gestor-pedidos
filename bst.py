@@ -56,15 +56,3 @@ class BST:
             print(f"Clave: {current.key}, Valor: {current.value}")
             self._print_in_order(current.right)
             
-            
-    def to_dictionary(self):
-        def node_to_dict(node):
-            if node is None:
-                return None
-            return {
-                "key": node.key,
-                "value": node.value,
-                "left": node_to_dict(node.left),
-                "right": node_to_dict(node.right)
-            }
-        return node_to_dict(self.root)

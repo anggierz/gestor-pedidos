@@ -3,12 +3,17 @@ import json
 from bst import BST
 
 
-def save_to_json(filename: str, data):
-    with open(filename, 'w') as file:
-        json.dump(data, file, indent=4)
-
-def load_bst_from_file(filename: str):
-    with open(filename, 'r') as file:
-        data = json.load(file)
-        
+def read_json(filepath: str):
+    if not os.path.isfile(filepath):
+        with open(filepath, "w") as f:
+            json.dump([], f)
+    with open(filepath, "r") as f:
+        data = json.load(f)
     return data
+
+
+
+def write_json(filepath: str, data):
+    with open(filepath, "w") as f:
+        json.dump(data, f, indent=4)
+        
