@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Tablet",
+        "price": 400.0
+    },
+    {
+        "id": 2,
+        "name": "Portatil",
+        "price": 4991.0
+    },
+    {
+        "id": 3,
+        "name": "Movil",
+        "price": 1232.0
+    }
+]
