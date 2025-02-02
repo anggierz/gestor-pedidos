@@ -4,7 +4,6 @@ from typing import Dict
 from linked_list import LinkedList
 from bst import BST
 from json_helpers import read_json, write_json
-from typing import List
 
 FILE_PRODUCTS = 'products.json'
 FILE_ORDERS = 'orders.json'
