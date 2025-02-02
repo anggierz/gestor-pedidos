@@ -39,14 +39,10 @@ app = FastAPI()
 @app.post('/api/product', tags=["PRODUCTS"], summary="Crear un producto",
          description="Este endpoint crea un producto y lo añade al BST y al JSON de base de datos.")
 def create_product(product: Product = Body(..., description="El objeto Product que contiene los detalles del nuevo producto.")):
-    existing_product = products_bst.search(product.id)
-    if existing_product == None:
-        products_bst.insert(product.id, product)
-        products_json = read_json(FILE_PRODUCTS)
-        products_json.append(product.dict())
-        write_json(FILE_PRODUCTS, products_json)
-    else:
-        raise HTTPException(status_code=400, detail= "A product with the same ID already exists")
+    products_bst.insert(product.id, product)
+    products_json = read_json(FILE_PRODUCTS)
+    products_json.append(product.dict())
+    write_json(FILE_PRODUCTS, products_json)
     
     return {"response": "Product successfully created!", "Product": product}
 
@@ -65,15 +61,10 @@ def get_product_by_id(id: int = Path(..., description="El ID único del producto
 @app.post('/api/order', tags=["ORDERS"], summary="Crear un nuevo pedido",
          description="Este endpoint crea un pedido y lo añade a la LL y a la base de datos JSON.")
 def create_order(order: Order = Body(..., description="El objeto Order que contiene los detalles del nuevo pedido.")):
-    existing_order = orders_ll.find(order.id)
-    
-    if existing_order == None:
-        orders_ll.add(order.id, order.dict())
-        orders_json = read_json(FILE_ORDERS)
-        orders_json.append(order.dict())
-        write_json(FILE_ORDERS, orders_json)
-    else:
-        raise HTTPException(status_code=400, detail=f"Order with ID {order.id} already exists.")
+    orders_ll.add(order.id, order.dict())
+    orders_json = read_json(FILE_ORDERS)
+    orders_json.append(order.dict())
+    write_json(FILE_ORDERS, orders_json)
     
     return {"response": "Order successfully created!", "Order": order}
 
